@@ -6,6 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { AuthContext } from '../context/AuthContext';
 import { makeStyles } from '@material-ui/styles';
 import { getContent } from '../services/content';
+import { Content } from '../components/Content';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -57,7 +58,6 @@ export default function Creator() {
       }
     }
   }, [creator, user]);
- 
 
   useEffect(() => {
     const storage = getStorage();
@@ -97,7 +97,7 @@ export default function Creator() {
         ref={setFileInput}
         onChange={fileOnChange}
       />
-      <Typography classname={classes.name} variant='h4' component='h2'>
+      <Typography className={classes.name} variant='h4' component='h2'>
         {creator?.name}
       </Typography>
       <Typography className={classes.bio} variant='body1'>
@@ -115,6 +115,9 @@ export default function Creator() {
           Add Content
         </Button>
       )}
+      {content?.map((content) => {
+        return <Content {...content} />;
+      })}
     </Paper>
   );
 }
