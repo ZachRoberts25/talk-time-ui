@@ -22,6 +22,7 @@ import { AuthContextProvider } from './context/AuthContext';
 import Creator from './pages/Creator';
 import { getApps, initializeApp } from 'firebase/app';
 import { firebaseConfig } from './config';
+import { CreateContent } from './pages/CreateContent';
 
 if (!getApps().length) {
   initializeApp(firebaseConfig);
@@ -76,6 +77,9 @@ export default function App() {
                   </Route>
                   <Route exact path='/creator/:creatorId'>
                     <Creator />
+                  </Route>
+                  <Route exact path='/create-content'>
+                    <CreateContent />
                   </Route>
                   <Route exact path='/'>
                     <CreatorsList />
