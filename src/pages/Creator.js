@@ -120,6 +120,7 @@ export default function Creator() {
           Add Content
         </Button>
       )}
+      <Typography variant="h3" style={{marginBottom: "20px"}}>Creator Content</Typography>
       <div className={classes.contentDiv}>
         {content?.map((content) => {
           return <Content {...content} />
