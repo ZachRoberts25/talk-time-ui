@@ -63,7 +63,7 @@ export default function Header() {
         <MenuItem onClick={closeMenu}>Logout</MenuItem>
       </Menu>
           <Typography variant="h6" className={classes.title}>
-            &nbsp;Talk Together
+            <Link to="/">Talk Together</Link>
           </Typography>
           {!user && (
             <Button color="inherit">

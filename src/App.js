@@ -1,6 +1,3 @@
-// import firebase from "firebase"
-// import "firebase/auth"
-// import { firebaseConfig } from "./config"
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Container, CssBaseline, Toolbar } from '@material-ui/core';
@@ -10,7 +7,7 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles';
 import Header from './components/Header';
-// import Footer from "./components/Footer"
+import Footer from "./components/Footer"
 // import Login from "./screens/Login"
 // import Home from "./screens/Home"
 import './App.css';
@@ -66,7 +63,7 @@ export default function App() {
               <Header />
               <Container
                 maxWidth='lg'
-                style={{ minHeight: '70vh', paddingTop: '20px' }}
+                style={{ minHeight: '80vh', paddingTop: '20px' }}
               >
                 <Switch>
                   <Route exact path='/login'>
@@ -86,6 +83,7 @@ export default function App() {
                   </Route>
                 </Switch>
               </Container>
+              <Footer />
             </div>
           </Router>
         </div>
