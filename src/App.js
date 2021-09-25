@@ -30,7 +30,7 @@ if (!getApps().length) {
 const theme = createTheme({
   palette: {
     primary: {
-      main: pink[500],
+      main: pink[600],
     },
   },
 });
