@@ -1,11 +1,14 @@
-import { makeStyles } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
-import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
-import Button from "@material-ui/core/Button"
-import IconButton from "@material-ui/core/IconButton"
-import MenuIcon from "@material-ui/icons/Menu"
-import ExtensionOutlinedIcon from "@material-ui/icons/ExtensionOutlined"
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ExtensionOutlinedIcon from '@material-ui/icons/ExtensionOutlined';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,28 +20,35 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-}))
+}));
 
 export default function Header() {
-  const classes = useStyles()
-
+  const classes = useStyles();
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position='static'>
         <Toolbar>
           <IconButton
-            edge="start"
+            edge='start'
             className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
+            color='inherit'
+            aria-label='menu'
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}><ExtensionOutlinedIcon />&nbsp;Talk Together
+          <Typography variant='h6' className={classes.title}>
+            <ExtensionOutlinedIcon />
+            &nbsp;Talk Together
           </Typography>
-          <Button color="inherit">Login</Button>
+          {!user && (
+            <Button color='inherit'>
+              <Link to='/login'>Login</Link>
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>
-  )
+  );
 }
