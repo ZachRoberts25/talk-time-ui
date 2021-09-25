@@ -14,3 +14,9 @@ export const createContent = async (summary, file) => {
   );
   return data;
 };
+
+export const getContent = async (contentId) => {
+  const {data} = await axios.get(`http://localhost:4200/content/${contentId}`)
+
+  return data;
+}

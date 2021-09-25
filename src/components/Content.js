@@ -1,3 +1,5 @@
+import { Card } from "@material-ui/core";
+
 export const Content = (props) => {
-  return <></>;
+  return <Card></Card>;
 };

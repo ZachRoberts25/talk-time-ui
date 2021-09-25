@@ -5,6 +5,7 @@ import { getCreator } from '../services/creator';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { AuthContext } from '../context/AuthContext';
 import { makeStyles } from '@material-ui/styles';
+import { getContent } from '../services/content';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -40,10 +41,12 @@ export default function Creator() {
   const [fileInput, setFileInput] = useState();
   const [canEdit, setEdit] = useState(false);
   const [profileImageUrl, setProfileImageUrl] = useState();
+  const [content, setContent] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
     if (params) {
       getCreator(params.creatorId).then(setCreator);
+      getContent(params.creatorId).then(setContent);
     }
   }, [params]);
 
@@ -54,6 +57,7 @@ export default function Creator() {
       }
     }
   }, [creator, user]);
+ 
 
   useEffect(() => {
     const storage = getStorage();
