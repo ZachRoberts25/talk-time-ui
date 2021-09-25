@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    letterSpacing: "3px",
+    textTransform: "uppercase",
   },
 }))
 
@@ -52,16 +54,18 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={closeMenu}
-      >
-        <MenuItem onClick={closeMenu}><Link to={`/creator/${user?.id}`}>Profile</Link></MenuItem>
-        <MenuItem onClick={closeMenu}>My account</MenuItem>
-        <MenuItem onClick={closeMenu}>Logout</MenuItem>
-      </Menu>
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={closeMenu}
+          >
+            <MenuItem onClick={closeMenu}>
+              <Link to={`/creator/${user?.id}`}>Profile</Link>
+            </MenuItem>
+            <MenuItem onClick={closeMenu}>My account</MenuItem>
+            <MenuItem onClick={closeMenu}>Logout</MenuItem>
+          </Menu>
           <Typography variant="h6" className={classes.title}>
             <Link to="/">Talk Together</Link>
           </Typography>
