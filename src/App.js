@@ -20,6 +20,12 @@ import ApproveContent from './pages/ApproveContent';
 import Login from './pages/Login';
 import { AuthContextProvider } from './context/AuthContext';
 import Creator from './pages/Creator';
+import { getApps, initializeApp } from 'firebase/app';
+import { firebaseConfig } from './config';
+
+if (!getApps().length) {
+  initializeApp(firebaseConfig);
+}
 
 const theme = createTheme({
   palette: {
